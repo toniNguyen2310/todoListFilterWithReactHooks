@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Modal, Input } from "antd";
 function TestValidate(props) {
+  console.log(">Hello new commit");
   return (
     <div>
       <>
@@ -32,7 +33,7 @@ function TestValidate(props) {
           <Input.Password placeholder="Nhập mật khẩu" />
           <label htmlFor="ageValue">Nhập lại mật khẩu</label>
           <Input.Password placeholder="Nhập lại mật khẩu" />
-          <button>Đăng ký</button>
+          <button>Đăng Ký</button>
         </div>
       </>
     </div>
