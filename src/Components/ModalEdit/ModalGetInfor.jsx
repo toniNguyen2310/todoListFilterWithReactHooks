@@ -32,6 +32,7 @@ const ModalGetInfor = (props) => {
 
   return (
     <>
+      <Button onClick={() => showModal()}>Add user</Button>
       <Modal
         open={open}
         title="Information Customer"
