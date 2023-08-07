@@ -9,9 +9,9 @@ import TestValidate from "./Components/Test API/TestValidate";
 function App() {
   return (
     <>
-      {/* <ApiWithReact /> */}
+      <ApiWithReact />
       {/* <PagiApi /> */}
-      <TestValidate />
+      {/* <TestValidate /> */}
     </>
   );
 }
