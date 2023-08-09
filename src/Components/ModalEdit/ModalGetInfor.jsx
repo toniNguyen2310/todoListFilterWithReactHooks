@@ -66,6 +66,7 @@ const ModalGetInfor = (props) => {
           <Input
             id="ageValue"
             placeholder="Enter age"
+            type="text"
             value={ageInput}
             onChange={(e) => setAgeInput(e.target.value)}
           />

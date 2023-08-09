@@ -52,7 +52,6 @@ function ApiWithReact(props) {
     }
 
     let data = {
-      id: uuidv4(),
       name: nameInput,
       age: ageInput,
       adUser: selectInput,
@@ -82,6 +81,10 @@ function ApiWithReact(props) {
     newData = newData.filter((item) => item.id != id);
     // pagination when delete
     setPageCount(Math.ceil(newData.length / itemsPerPage));
+    console.log;
+    if (currentPage > Math.ceil(newData.length / itemsPerPage)) {
+      setCurrentPage(currentPage - 1);
+    }
     setListDatas(newData);
   };
 

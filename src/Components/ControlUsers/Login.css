@@ -1,0 +1,51 @@
+/* body {
+  background-color: #dbdbdd;
+} */
+.form-login {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  border-radius: 10px;
+  background-color: #333333;
+  color: white;
+}
+h2 {
+  font-weight: bold;
+}
+.form-login input {
+  width: 500px;
+  margin-top: 10px;
+  height: 40px;
+  padding-left: 10px;
+  border-radius: 5px;
+  color: white;
+  border: 2px solid #444444;
+  background-color: #444444;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+.btnLogin {
+  margin-top: 15px;
+  background-color: #1677ff;
+  color: white;
+  font-size: 15px;
+}
+.input-password {
+  position: relative;
+  margin-top: -20px;
+}
+.form-login svg {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+a {
+  margin-top: 10px;
+}

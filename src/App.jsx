@@ -3,15 +3,15 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import ApiWithReact from "./Components/ApiWithReact/ApiWithReact";
-import PagiApi from "../src/PagiApi";
-import TestApi from "./Components/Test API/TestApi";
-import TestValidate from "./Components/Test API/TestValidate";
+import SignupUsers from "./Components/ControlUsers/SignupUsers";
+import Login from "./Components/ControlUsers/Login";
+
 function App() {
   return (
     <>
-      <ApiWithReact />
-      {/* <PagiApi /> */}
-      {/* <TestValidate /> */}
+      {/* <ApiWithReact /> */}
+      {/* <Login /> */}
+      <SignupUsers />
     </>
   );
 }
