@@ -155,7 +155,6 @@ function ApiWithReact(props) {
   const handlePageClick = (data) => {
     setCurrentPage(data.selected);
   };
-  console.log(isLoginSuccess);
   return (
     <>
       {loading ? (
