@@ -5,7 +5,9 @@ import "react-toastify/dist/ReactToastify.css";
 import bcrypt from "bcryptjs-react";
 import { ToastContainer, toast } from "react-toastify";
 import "./Login.css";
-function Login() {
+
+function Login(props) {
+  const { isLoginSuccess, setIsLoginSuccess } = props;
   const refInput = useRef(null);
   const [emailLogin, setEmailLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
@@ -59,9 +61,10 @@ function Login() {
         ) {
           isLoginSuccess = true;
           setTimeout(() => {
-            toast.success("Đăng nhập thành công");
             setEmailLogin("");
             setPasswordLogin("");
+            setIsLoginSuccess(true);
+            toast.success("Đăng nhập thành công");
           }, 600);
         }
       });
@@ -84,52 +87,57 @@ function Login() {
   useEffect(() => {
     refInput.current.focus();
   }, []);
-  return (
-    <div>
-      <>
-        <div className="form-login">
-          <h2>ĐĂNG NHẬP</h2>
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            ref={refInput}
-            placeholder="Nhập Email...."
-            onKeyUp={(e) => handleKeyPress(e)}
-            value={emailLogin}
-            onChange={(e) => setEmailLogin(e.target.value)}
-          />
-          <br />
-          <div className="input-password">
-            <label htmlFor="password">Mật khẩu</label>
-            <input
-              id="passwordLogin"
-              type={isShowPass ? "text" : "password"}
-              placeholder="Nhập password..."
-              onKeyUp={(e) => handleKeyPress(e)}
-              value={passwordLogin}
-              onChange={(e) => setPasswordLogin(e.target.value)}
-            />
-            {isShowPass ? (
-              <AiFillEye onClick={() => setIsShowPass(!isShowPass)} />
-            ) : (
-              <AiFillEyeInvisible onClick={() => setIsShowPass(!isShowPass)} />
-            )}
-          </div>
-          <a href="">Quên mật khẩu</a>
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-            <button className="btnLogin" onClick={handleLogin}>
-              ĐĂNG NHẬP
-            </button>
-          )}
 
-          <a href=""> Quay lại trang chủ</a>
-        </div>
-      </>
-      <ToastContainer position="top-center" autoClose={2000} theme="dark" />
-    </div>
+  return (
+    <>
+      <div>
+        <>
+          <div className="form-login">
+            <h2>ĐĂNG NHẬP</h2>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              ref={refInput}
+              placeholder="Nhập Email...."
+              onKeyUp={(e) => handleKeyPress(e)}
+              value={emailLogin}
+              onChange={(e) => setEmailLogin(e.target.value)}
+            />
+            <br />
+            <div className="input-password">
+              <label htmlFor="password">Mật khẩu</label>
+              <input
+                id="passwordLogin"
+                type={isShowPass ? "text" : "password"}
+                placeholder="Nhập password..."
+                onKeyUp={(e) => handleKeyPress(e)}
+                value={passwordLogin}
+                onChange={(e) => setPasswordLogin(e.target.value)}
+              />
+              {isShowPass ? (
+                <AiFillEye onClick={() => setIsShowPass(!isShowPass)} />
+              ) : (
+                <AiFillEyeInvisible
+                  onClick={() => setIsShowPass(!isShowPass)}
+                />
+              )}
+            </div>
+            <a href="">Quên mật khẩu</a>
+            {isLoading ? (
+              <div>Loading...</div>
+            ) : (
+              <button className="btnLogin" onClick={handleLogin}>
+                ĐĂNG NHẬP
+              </button>
+            )}
+
+            <a href="">Quay lại trang chủ</a>
+          </div>
+        </>
+        <ToastContainer position="top-center" autoClose={2000} theme="dark" />
+      </div>
+    </>
   );
 }
 

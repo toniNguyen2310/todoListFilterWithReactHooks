@@ -57,7 +57,9 @@ function SignupUsers(props) {
       }
     });
     if (!validatePassword(passwordSignup) && isDuplicate === false) {
-      toast.error("Mật khẩu không đúng định dạng");
+      toast.error(
+        "Mật khẩu cần tối thiểu 8 ký tự kết hợp chữ thường và chữ hoa, số và ký tự đặc biệt"
+      );
       return;
     }
     if (!rePasswordSignup && isDuplicate === false) {
@@ -141,7 +143,7 @@ function SignupUsers(props) {
           <a href=""> Quay lại đăng nhập</a>
         </div>
       </>
-      <ToastContainer position="top-center" autoClose={2000} theme="dark" />
+      <ToastContainer position="top-center" autoClose={3000} theme="dark" />
     </div>
   );
 }
