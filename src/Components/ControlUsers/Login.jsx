@@ -103,7 +103,7 @@ function Login() {
           <div className="input-password">
             <label htmlFor="password">Mật khẩu</label>
             <input
-              id="password"
+              id="passwordLogin"
               type={isShowPass ? "text" : "password"}
               placeholder="Nhập password..."
               onKeyUp={(e) => handleKeyPress(e)}

@@ -43,6 +43,7 @@ th {
 label {
   font-weight: 600;
 }
+
 ul.pagination {
   display: flex;
   flex-direction: row;
@@ -50,3 +51,12 @@ ul.pagination {
   align-items: center;
   margin-top: 20px;
 }
+.ant-modal-content label {
+  margin-bottom: 5px;
+}
+.ant-select-selection-item {
+  width: 60px;
+}
+/* .ant-select span {
+  width: 80px;
+} */

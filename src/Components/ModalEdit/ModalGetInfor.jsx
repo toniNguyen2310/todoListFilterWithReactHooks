@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, Input, Select } from "antd";
+import { Button, Modal, Input, Select, Tag } from "antd";
 
 const ModalGetInfor = (props) => {
   const {
@@ -32,7 +32,9 @@ const ModalGetInfor = (props) => {
 
   return (
     <>
-      <Button onClick={() => showModal()}>Add user</Button>
+      <Button type="primary" onClick={() => showModal()}>
+        Add user
+      </Button>
       <Modal
         open={open}
         title="Information Customer"
@@ -58,6 +60,7 @@ const ModalGetInfor = (props) => {
           <Input
             id="nameValue"
             placeholder="Enter Name"
+            type="text"
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
             ref={inputRef}
@@ -66,31 +69,24 @@ const ModalGetInfor = (props) => {
           <Input
             id="ageValue"
             placeholder="Enter age"
-            type="text"
+            type="number"
             value={ageInput}
             onChange={(e) => setAgeInput(e.target.value)}
           />
         </div>
         <div className="selectValue" style={{ marginTop: 10 }}>
-          <label htmlFor="">User/Admin</label>
           <Select
-            defaultValue={selectInput}
-            style={{
-              width: 120,
-              marginLeft: 10,
-            }}
+            defaultValue="Admin"
+            value={selectInput}
             onChange={handleChangeSelect}
-            options={[
-              {
-                value: "Admin",
-                label: "Admin",
-              },
-              {
-                value: "User",
-                label: "User",
-              },
-            ]}
-          />
+          >
+            <Select.Option value="Admin" label="Admin">
+              <Tag color="red">Admin</Tag>
+            </Select.Option>
+            <Select.Option value="User" label="User">
+              <Tag color="blue">User</Tag>
+            </Select.Option>
+          </Select>
         </div>
       </Modal>
     </>

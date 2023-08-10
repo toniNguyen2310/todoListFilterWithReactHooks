@@ -4,7 +4,6 @@ import { Button } from "antd";
 import ModalGetInfor from "../ModalEdit/ModalGetInfor";
 import TableDatas from "../TableDatas/TableDatas";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 import ReactPaginate from "react-paginate";
 
 function ApiWithReact(props) {
@@ -14,7 +13,10 @@ function ApiWithReact(props) {
   const [nameInput, setNameInput] = useState("");
   const [ageInput, setAgeInput] = useState("");
   const [fakeIdUpdate, setFakeIdUpdate] = useState();
-  const [selectInput, setSelectInput] = useState("Admin");
+  const [selectInput, setSelectInput] = useState({
+    value: "Admin",
+    label: "Admin",
+  });
   const [open, setOpen] = useState(false);
   const inputRef = useRef(null);
   //Pagination
@@ -54,7 +56,7 @@ function ApiWithReact(props) {
     let data = {
       name: nameInput,
       age: ageInput,
-      adUser: selectInput,
+      adUser: selectInput.value,
     };
     let res = await axios.post(
       "https://64c9473cb2980cec85c21b70.mockapi.io/infor",
@@ -68,7 +70,10 @@ function ApiWithReact(props) {
     }
     setNameInput("");
     setAgeInput("");
-    setSelectInput("Admin");
+    setSelectInput({
+      value: "Admin",
+      label: "Admin",
+    });
     setOpen(false);
   };
 
@@ -81,8 +86,7 @@ function ApiWithReact(props) {
     newData = newData.filter((item) => item.id != id);
     // pagination when delete
     setPageCount(Math.ceil(newData.length / itemsPerPage));
-    console.log;
-    if (currentPage > Math.ceil(newData.length / itemsPerPage)) {
+    if (currentPage + 1 > Math.ceil(newData.length / itemsPerPage)) {
       setCurrentPage(currentPage - 1);
     }
     setListDatas(newData);
@@ -104,7 +108,7 @@ function ApiWithReact(props) {
       id: fakeIdUpdate,
       name: nameInput,
       age: ageInput,
-      adUser: selectInput,
+      adUser: selectInput.value,
     };
     let res = await axios.put(
       `https://64c9473cb2980cec85c21b70.mockapi.io/infor/${fakeIdUpdate}`,
@@ -122,12 +126,19 @@ function ApiWithReact(props) {
     setAgeInput("");
     setOpen(false);
     setIsEdit(false);
-    setSelectInput("Admin");
+    setSelectInput({
+      value: "Admin",
+      label: "Admin",
+    });
     console.log(newData);
   };
 
   const handleChangeSelect = (value) => {
-    setSelectInput(value);
+    setSelectInput({
+      value: value,
+      label: value,
+    });
+    console.log(">>>value select:", value);
   };
 
   useEffect(() => {
@@ -138,7 +149,6 @@ function ApiWithReact(props) {
   useEffect(() => {
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    // const listDataPagination = listDatas?.slice(startIndex, endIndex);
     setlistDataPagination(listDatas?.slice(startIndex, endIndex));
   }, [listDatas, currentPage]);
 
@@ -176,7 +186,9 @@ function ApiWithReact(props) {
           <ReactPaginate
             nextLabel=">>>"
             onPageChange={handlePageClick}
-            pageRangeDisplayed={2}
+            marginPagesDisplayed={10}
+            pageRangeDisplayed={5}
+            forcePage={currentPage}
             pageCount={pageCount}
             previousLabel="<<<"
             pageClassName="page-item"

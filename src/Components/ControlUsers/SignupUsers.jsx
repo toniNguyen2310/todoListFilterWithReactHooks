@@ -35,7 +35,7 @@ function SignupUsers(props) {
   };
   //Handle Submit Signup
 
-  const handleLogin = async () => {
+  const handleSignup = async () => {
     setIsloading(true);
     let isDuplicate = false;
     if (!emailSignup && isDuplicate === false) {
@@ -85,7 +85,7 @@ function SignupUsers(props) {
   const handleKeyPress = (e) => {
     let key = e.keyCode || e.which;
     if (key === 13) {
-      handleLogin();
+      handleSignup();
     }
   };
 
@@ -135,7 +135,7 @@ function SignupUsers(props) {
             />
           </div>
 
-          <button className="btnLogin" onClick={handleLogin}>
+          <button className="btnLogin" onClick={handleSignup}>
             ĐĂNG KÝ
           </button>
           <a href=""> Quay lại đăng nhập</a>
